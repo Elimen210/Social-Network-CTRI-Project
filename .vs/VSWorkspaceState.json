@@ -5,8 +5,9 @@
     "\\Guetto\\Guetto",
     "\\Guetto\\landing",
     "\\Guetto\\landing\\templates",
-    "\\Guetto\\landing\\templates\\landing"
+    "\\Guetto\\landing\\templates\\landing",
+    "\\Guetto\\social"
   ],
-  "SelectedNode": "\\Guetto\\landing\\templates\\landing",
+  "SelectedNode": "\\Guetto\\landing\\templates\\landing\\base.html",
   "PreviewInSolutionExplorer": false
 }
