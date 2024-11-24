@@ -6,8 +6,10 @@
     "\\Guetto\\landing",
     "\\Guetto\\landing\\templates",
     "\\Guetto\\landing\\templates\\landing",
-    "\\Guetto\\social"
+    "\\Guetto\\social",
+    "\\Guetto\\social\\migrations",
+    "\\Guetto\\social\\__pycache__"
   ],
-  "SelectedNode": "\\Guetto\\landing\\templates\\landing\\base.html",
+  "SelectedNode": "\\Guetto\\landing\\templates\\landing\\index.html",
   "PreviewInSolutionExplorer": false
 }
