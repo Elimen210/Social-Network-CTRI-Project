@@ -10,6 +10,6 @@
     "\\Guetto\\social\\migrations",
     "\\Guetto\\social\\__pycache__"
   ],
-  "SelectedNode": "\\Guetto\\landing\\templates\\landing\\index.html",
+  "SelectedNode": "\\Guetto\\Guetto\\urls.py",
   "PreviewInSolutionExplorer": false
 }
