@@ -6,10 +6,11 @@
     "\\Guetto\\landing",
     "\\Guetto\\landing\\templates",
     "\\Guetto\\landing\\templates\\landing",
-    "\\Guetto\\social",
     "\\Guetto\\social\\migrations",
-    "\\Guetto\\social\\__pycache__"
+    "\\Guetto\\templates",
+    "\\Guetto\\templates\\account",
+    "\\Guetto\\templates\\allauth"
   ],
-  "SelectedNode": "\\Guetto\\Guetto\\settings.py",
+  "SelectedNode": "\\Guetto\\landing\\templates\\landing\\navbar.html",
   "PreviewInSolutionExplorer": false
 }
