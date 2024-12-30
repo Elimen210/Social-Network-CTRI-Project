@@ -7,10 +7,8 @@
     "\\Guetto\\social",
     "\\Guetto\\social\\migrations",
     "\\Guetto\\social\\templates",
-    "\\Guetto\\social\\templates\\social",
-    "\\Guetto\\templates\\account",
-    "\\Guetto\\templates\\allauth"
+    "\\Guetto\\social\\templates\\social"
   ],
-  "SelectedNode": "\\Guetto\\social\\forms.py",
+  "SelectedNode": "\\Guetto\\social\\views.py",
   "PreviewInSolutionExplorer": false
 }
