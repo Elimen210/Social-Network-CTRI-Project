@@ -2,6 +2,7 @@
   "ExpandedNodes": [
     "",
     "\\Guetto",
+    "\\Guetto\\Guetto",
     "\\Guetto\\landing",
     "\\Guetto\\landing\\templates",
     "\\Guetto\\social",
@@ -9,6 +10,6 @@
     "\\Guetto\\social\\templates",
     "\\Guetto\\social\\templates\\social"
   ],
-  "SelectedNode": "\\Guetto\\social\\views.py",
+  "SelectedNode": "\\Guetto\\social\\models.py",
   "PreviewInSolutionExplorer": false
 }

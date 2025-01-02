@@ -2,15 +2,25 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div>
-    {% for post in post_list %}
-    <div class="row justify-content-center mt-3">
-        <div class="col-md-5 col-sm-12 border-bottom position-relative">
-            <p><strong>{{ post.author }}</strong> {{ post.created_on }} </p>
-            <p>{{ post.body }}</p>
-            <a href="{% url 'post-detail' post.pk %}" class="stretched-link"></a>
+    {% if user.is_authenticated %}
+    <div>
+        {% for post in post_list %}
+        <div class="row justify-content-center mt-3">
+            <div class="col-md-5 col-sm-12 border-bottom position-relative">
+                <p><strong>{{ post.author }}</strong> {{ post.created_on }} </p>
+                <p>{{ post.body }}</p>
+                <a href="{% url 'post-detail' post.pk %}" class="stretched-link"></a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="container">
+        <div class="row mt-5">
+            <div class="row justify-content-center mt-3">
+                <a href="{% url 'index' %}" class="col-md-5 col-sm-12 border-bottom position-relative">Back to Home Page to sign up or login and so, to view posts !!</a>
+            </div>
         </div>
     </div>
-    {% endfor %}
-</div>
+    {% endif %}
 {% endblock content %}

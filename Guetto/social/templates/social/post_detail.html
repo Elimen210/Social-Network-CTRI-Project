@@ -2,40 +2,57 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div class="container">
-    <div class="row mt-5">
-        <div class="col-md-5 col-sm-6">
-            <a href="{% url 'post-list' %}" class="btn btn_light">Back to Feed</a>
+    {% if user.is_authenticated %}
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-5 col-sm-6">
+                <a href="{% url 'post-list' %}" class="btn btn_light">Back to Feed</a>
+            </div>
         </div>
-    </div>
 
-    <div class="row justify-content-center mt-3">
-        <div class="col-md-5 col-sm-12 border-bottom">
-            <p><strong>{{ post.author }}</strong> {{ post.created_on }} </p>
-            <p>{{ post.body }}</p>
+        <div class="row justify-content-center mt-3">
+            <div class="col-md-5 col-sm-12 border-bottom">
+                <p><strong>{{ post.author }}</strong> {{ post.created_on }} </p>
+                <p>{{ post.body }}</p>
+            </div>
         </div>
-    </div>
 
-    <div class="row justify-content-center mt-3">
-        <div class="col-md-5 col-sm-12">
-            <form method="post">
-                {% csrf_token %}
-                {{ form | crispy }}
-                <div class="d-grid gap-2">
-                    <button class="btnb btn-success mt-3">Submit !</button>
-                </div>
-            </form>
+        <div class="row justify-content-center mt-3">
+            <div class="col-md-5 col-sm-12">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    <div class="d-grid gap-2">
+                        <button class="btnb btn-success mt-3">Submit !</button>
+                    </div>
+                </form>
+            </div>
         </div>
+        {% for comment in comments %}
+        <div class="row justify-content-center mt-3 mb-5 border-bottom">
+            <div class="col-md-5 col-sm-12">
+                <p>
+                    <strong>{{ comment.author }}</strong> {{ comment.created_on }}
+                </p>
+                <p>{{ comment.comment }}</p>
+            </div>
+        </div>
+        {% endfor %}
     </div>
-    {% for comment in comments %}
-    <div class="row justify-content-center mt-3 mb-5 border-bottom">
-        <div class="col-md-5 col-sm-12">
-            <p>
-                <strong>{{ comment.author }}</strong> {{ comment.created_on }}
+    {% else %}
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-5 col-sm-6">
+                <a href="{% url 'index' %}" class="btn btn_light">Back to Home Page</a>
+            </div>
+        </div>
+        <div>
+            <p><strong>{{ comment.author }}</strong> {{ comment.created_on }}
             </p>
-            <p>{{ comment.comment }}</p>
+            <div class="row justify-content-center mt-3">
+                <p class="col-md-5 col-sm-12 border-bottom position-relative">Log in or Sign up to Comment that post !!</p>
+            </div>
         </div>
     </div>
-    {% endfor %}
-</div>
+    {% endif %}
 {% endblock content %}
