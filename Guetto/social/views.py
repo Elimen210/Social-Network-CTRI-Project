@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views import View
+from django.http import HttpResponseRedirect
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
@@ -66,6 +67,22 @@ class PostDetailView(LoginRequiredMixin, View):
 
         return render(request, 'social/post_detail.html', context)
 
-class AddLikes(LoginRequiredMixin, View):
-    def post(self, request, pk, *args, **kwargs):
+class AddLike(LoginRequiredMixin, View):
+     def post(self, request, pk, *args, **kwargs):
         post = Post.objects.get(pk=pk)
+
+        is_like = False
+
+        for like in post.likes.all():
+            if like == request.user:
+                is_like = True
+                break
+
+        if not is_like:
+            post.likes.add(request.user)
+
+        if is_like:
+            post.likes.remove(request.user)
+
+        next = request.POST.get('next', '/')
+        return HttpResponseRedirect(next)
