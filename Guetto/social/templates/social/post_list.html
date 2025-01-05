@@ -6,7 +6,6 @@
     <div>
         {% for post in post_list %}
         <div class="row justify-content-center mt-3">
-        <div class="row justify-content-center mt-3">
             <div class="col-md-5 col-sm-12 border-bottom position-relative">
                 <p><strong>{{ post.author }}</strong> {{ post.created_on }} </p>
                 <div class="position-relative">
@@ -29,6 +28,7 @@
                     </form>
                 </div>
             </div>
+        </div>
         {% endfor %}
     </div>
     {% else %}
