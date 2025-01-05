@@ -6,14 +6,17 @@
     <div>
         {% for post in post_list %}
         <div class="row justify-content-center mt-3">
-        <div class="row justify-content-center mt-3">
             <div class="col-md-5 col-sm-12 border-bottom position-relative">
                 <p><strong>{{ post.author }}</strong> {{ post.created_on }} </p>
                 <div class="position-relative">
-                    {% if post.image %}
-                    <form method="POST" enctype="multipart/form-data">
-                        <img src="{{ post.image }}" class="post-image">
-                    </form>
+                    {% if post.image.count > 0 %}
+                    <div class="row">
+                        {% for img in images %}
+                        <div class="col-md-4 col-xs-12">
+                            <img src="{{ img.image.url }}" class="post-image" />
+                        </div>
+                        {% endfor %}
+                    </div>
                     {% endif %}
                     <p>{{ post.body }}</p>
                     <a href="{% url 'post-detail' post.pk %}" class="stretched-link"></a>
@@ -29,6 +32,7 @@
                     </form>
                 </div>
             </div>
+        </div>
         {% endfor %}
     </div>
     {% else %}
@@ -39,6 +43,5 @@
             </div>
         </div>
     </div>
-
     {% endif %}
 {% endblock content %}

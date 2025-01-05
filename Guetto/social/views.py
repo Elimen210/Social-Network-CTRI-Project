@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponseRedirect
-from .models import Post, Comment
+from .models import Post, Comment, Image
 from .forms import PostForm, CommentForm
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 
@@ -20,10 +20,18 @@ class PostListView(LoginRequiredMixin, View):
     def post(self, request, *args, **kwargs):
         post = Post.objects.all().order_by('-created_on')
         form = PostForm(request.POST)
+        files = request.FILES.getlist('image')
 
         if form.is_valid():
             new_post = form.save(commit=False)
             new_post.author = request.user
+            new_post.save()
+
+            for f in files:
+                img = Image(image=f)
+                img.save()
+                new_post.image.add(img)
+
             new_post.save()
 
         context = {

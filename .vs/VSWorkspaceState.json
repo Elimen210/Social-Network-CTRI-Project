@@ -2,7 +2,6 @@
   "ExpandedNodes": [
     "",
     "\\Guetto",
-    "\\Guetto\\Guetto",
     "\\Guetto\\landing",
     "\\Guetto\\media",
     "\\Guetto\\media\\uploads",
@@ -12,6 +11,6 @@
     "\\Guetto\\social\\templates\\social",
     "\\Guetto\\static"
   ],
-  "SelectedNode": "\\Guetto\\social\\views.py",
+  "SelectedNode": "\\Guetto\\social\\forms.py",
   "PreviewInSolutionExplorer": false
 }
