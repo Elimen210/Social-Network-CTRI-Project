@@ -1,8 +1,14 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Guetto"
+    "\\Guetto",
+    "\\media",
+    "\\media\\uploads",
+    "\\media\\uploads\\post_photos",
+    "\\social",
+    "\\social\\templates",
+    "\\social\\templates\\social"
   ],
-  "SelectedNode": "\\Guetto\\settings.py",
+  "SelectedNode": "\\README.md",
   "PreviewInSolutionExplorer": false
 }

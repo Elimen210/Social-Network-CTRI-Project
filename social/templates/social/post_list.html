@@ -10,9 +10,9 @@
                 <p><strong>{{ post.author }}</strong> {{ post.created_on }} </p>
                 <div class="position-relative">
                     {% if post.image %}
-                        <img src="{{ post.image }}" class="post-image">
+                        <img src="{{ post.image.url }}" class="post-image" alt="Post Image">
                     {% endif %}
-                    <p>{{ post.body }}</p>
+                        <p>{{ post.body }}</p>
                     <a href="{% url 'post-detail' post.pk %}" class="stretched-link"></a>
                 </div>
 
