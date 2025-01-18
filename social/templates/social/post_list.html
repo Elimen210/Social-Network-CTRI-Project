@@ -10,13 +10,27 @@
                 <p><strong>{{ post.author }}</strong> {{ post.created_on }} </p>
                 <div class="position-relative">
                     {% if post.image %}
-                        <img src="{{ post.image.url }}" class="post-image" alt="Post Image">
+                    <img src="{{ post.image.url }}" class="post-image" alt="Post Image">
                     {% endif %}
-                        <p>{{ post.body }}</p>
-                    <a href="{% url 'post-detail' post.pk %}" class="stretched-link"></a>
+                    {% if post.video %}
+                    <video controls autoplay class="post-video">
+                        <source src="{{ post.video.url }}" type="video/mp4">
+                    </video>
+                    {% endif %}
+
+                    <p>{{ post.body }}</p>
                 </div>
 
-                <div class="d-flex flex-row">
+                <div class="d-flex align-items-center justify-content-start mt-2">
+
+                    <form method="post" action="{% url 'post-detail' post.pk %}" class="me-3">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ request.path }}">
+                        <button>
+                            <i class="fas fa-comment"></i>
+                        </button>
+                    </form>
+
                     <form method="POST" action="{% url 'like' post.pk %}">
                         {% csrf_token %}
                         <input type="hidden" name="next" value="{{ request.path }}">
@@ -26,7 +40,6 @@
                     </form>
                 </div>
             </div>
-        </div>
         {% endfor %}
     </div>
     {% else %}

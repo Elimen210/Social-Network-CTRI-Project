@@ -17,6 +17,11 @@
                     {% if post.image %}
                     <img src="{{ post.image.url }}" class="post-image" />
                     {% endif %}
+                    {% if post.video %}
+                    <video controls class="post-video">
+                        <source src="{{ post.video.url }}" type="video/mp4">
+                    </video>
+                    {% endif %}
                     <p>{{ post.body }}</p>
                     <div class="d-flex flex-row">
                         <form method="POST" action="{% url 'like' post.pk %}">

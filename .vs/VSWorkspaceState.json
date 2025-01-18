@@ -1,14 +1,15 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Guetto",
-    "\\media",
+    "\\landing",
+    "\\landing\\templates",
+    "\\landing\\templates\\landing",
     "\\media\\uploads",
     "\\media\\uploads\\post_photos",
     "\\social",
     "\\social\\templates",
     "\\social\\templates\\social"
   ],
-  "SelectedNode": "\\README.md",
+  "SelectedNode": "\\social\\templates\\social\\post_detail.html",
   "PreviewInSolutionExplorer": false
 }
