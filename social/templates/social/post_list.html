@@ -23,19 +23,19 @@
 
                 <div class="d-flex align-items-center justify-content-start mt-2">
 
-                    <form method="post" action="{% url 'post-detail' post.pk %}" class="me-3">
-                        {% csrf_token %}
-                        <input type="hidden" name="next" value="{{ request.path }}">
-                        <button>
-                            <i class="fas fa-comment"></i>
-                        </button>
-                    </form>
-
                     <form method="POST" action="{% url 'like' post.pk %}">
                         {% csrf_token %}
                         <input type="hidden" name="next" value="{{ request.path }}">
-                        <button class="background-color: transparent; border: none; box-shadow: none;" type="submit">
+                        <button class="remove-default-btn" type="submit">
                             <i class="fas fa-heart"><span> {{ post.likes.all.count }}</span></i>
+                        </button>
+                    </form>
+
+                    <form method="post" action="{% url 'post-detail' post.pk %}" class="me-3">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ request.path }}">
+                        <button class="remove-default-btn" type="submit">
+                            <i class="fas fa-comment"></i>
                         </button>
                     </form>
                 </div>

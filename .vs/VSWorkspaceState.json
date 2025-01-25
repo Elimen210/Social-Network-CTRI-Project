@@ -4,12 +4,12 @@
     "\\landing",
     "\\landing\\templates",
     "\\landing\\templates\\landing",
-    "\\media\\uploads",
-    "\\media\\uploads\\post_photos",
     "\\social",
     "\\social\\templates",
-    "\\social\\templates\\social"
+    "\\social\\templates\\social",
+    "\\static",
+    "\\static\\js"
   ],
-  "SelectedNode": "\\social\\templates\\social\\post_detail.html",
+  "SelectedNode": "\\social\\admin.py",
   "PreviewInSolutionExplorer": false
 }
