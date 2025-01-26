@@ -4,26 +4,32 @@
 {% block content %}
     {% if user.is_authenticated %}
     <div>
+        <div class="container">
+            <div class="row justify-content-center mt-5">
+                <div class="col-md-10 col-sm-12 text-center border-bottom">
+                    <h3 class="display-2">Guetto</h3>
+                </div>
+            </div>
+        </div>
+
         {% for post in post_list %}
         <div class="row justify-content-center mt-3">
-            <div class="col-md-5 col-sm-12 border-bottom position-relative">
+            <div class="justify-content-center col-md-5 col-sm-12 text-center border-bottom position-relative">
                 <p><strong>{{ post.author }}</strong> {{ post.created_on }} </p>
-                <div class="position-relative">
+                <div class="row justify-content-center mt-3">
                     {% if post.image %}
                     <img src="{{ post.image.url }}" class="post-image" alt="Post Image">
                     {% endif %}
                     {% if post.video %}
-                    <video controls autoplay class="post-video">
-                        <source src="{{ post.video.url }}" type="video/mp4">
-                    </video>
+                        <video controls autoplay class="post-video">
+                            <source src="{{ post.video.url }}" type="video/mp4">
+                        </video>
                     {% endif %}
-
                     <p>{{ post.body }}</p>
                 </div>
 
-                <div class="d-flex align-items-center justify-content-start mt-2">
-
-                    <form method="POST" action="{% url 'like' post.pk %}">
+                <div class="justify-content-center d-flex">
+                    <form method="POST" action="{% url 'like' post.pk %}" class="me-3">
                         {% csrf_token %}
                         <input type="hidden" name="next" value="{{ request.path }}">
                         <button class="remove-default-btn" type="submit">
@@ -40,16 +46,16 @@
                     </form>
                 </div>
             </div>
-        {% endfor %}
-    </div>
-    {% else %}
-    <div class="container">
-        <div class="row mt-5">
-            <div class="row justify-content-center mt-3">
-                <a href="{% url 'index' %}" class="col-md-5 col-sm-12 border-bottom position-relative">Back to Home Page to sign up or login and so, to view posts !!</a>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="container">
+            <div class="row mt-5">
+                <div class="row justify-content-center mt-3">
+                    <a href="{% url 'index' %}" class="col-md-5 col-sm-12 border-bottom position-relative">Back to Home Page to sign up or login and so, to view posts !!</a>
+                </div>
             </div>
         </div>
+        {% endif %}
     </div>
-
-    {% endif %}
 {% endblock content %}

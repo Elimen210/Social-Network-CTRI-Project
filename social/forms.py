@@ -22,6 +22,7 @@ class PostForm(forms.ModelForm):
 class CommentForm(forms.ModelForm):
     comment = forms.CharField(
             label='',
+            required=False,
             widget=forms.Textarea(attrs={
                 'rows': '3',
                 'placeholder': 'Say Something...'
