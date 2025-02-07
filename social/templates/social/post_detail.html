@@ -3,114 +3,102 @@
 {% load static %}
 
 {% block content %}
-    {% if user.is_authenticated %}
-    <div class="container">
-        <div class="row mt-5">
-            <div class="col-md-5 col-sm-6">
-                <a href="{% url 'post-list' %}" class="btn btn_light">Back to Feed</a>
-            </div>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-5 col-sm-6">
+            <a href="{% url 'post-list' %}" class="btn btn_light">Back to Feed</a>
         </div>
+    </div>
 
-        <div class="row justify-content-center mt-3">
-            <div class="col-md-5 col-sm-12 border-bottom">
-                <p><strong>{{ post.author }}</strong> {{ post.created_on }} </p>
-                <div class="position-relative">
-                    {% if post.image %}
-                    <img src="{{ post.image.url }}" class="post-image" />
-                    {% endif %}
-                    {% if post.video %}
-                    <video controls class="post-video">
-                        <source src="{{ post.video.url }}" type="video/mp4">
-                    </video>
-                    {% endif %}
-                    <p>{{ post.body }}</p>
-                    <div class="d-flex flex-row">
-                        <form method="POST" action="{% url 'like' post.pk %}">
-                            {% csrf_token %}
-                            <input type="hidden" name="next" value="{{ request.path }}">
-                            <button class="remove-default-btn" type="submit">
-                                <i class="fas fa-heart"><span> {{ post.likes.all.count }}</span></i>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center mt-3">
-            <div class="col-md-5 col-sm-12">
-                <form method="post">
-                    {% csrf_token %}
-                    {{ form | crispy }}
-                    <div class="d-grid gap-2">
-                        <button class="btnb btn-success mt-3">Submit !</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        {% for comment in comments %}
-        {% if comment.is_parent %}
-        <div class="row justify-content-center mt-3 mb-5 border-bottom">
-            <div class="col-md-5 col-sm-12">
-                <p>
-                    <strong>{{ comment.author }}</strong> {{ comment.created_on }}
-                </p>
-                <p>{{ comment.comment }}</p>
-
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-5 col-sm-12 border-bottom">
+            <p><strong>{{ post.author }}</strong> {{ post.created_on }} </p>
+            <div class="position-relative">
+                {% if post.image %}
+                <img src="{{ post.image.url }}" class="post-image" />
+                {% endif %}
+                {% if post.video %}
+                <video controls class="post-video">
+                    <source src="{{ post.video.url }}" type="video/mp4">
+                </video>
+                {% endif %}
+                <p>{{ post.body }}</p>
                 <div class="d-flex flex-row">
-                    <form method="POST" action="{% url 'comment-like' post.pk comment.pk %}">
+                    <form method="POST" action="{% url 'like' post.pk %}">
                         {% csrf_token %}
                         <input type="hidden" name="next" value="{{ request.path }}">
                         <button class="remove-default-btn" type="submit">
-                            <i class="fas fa-heart"> <span>{{ comment.likes.all.count }}</span></i>
+                            <i class="fas fa-heart"><span>{{ post.likes.all.count }}</span></i>
                         </button>
                     </form>
-
-                    <div>
-                        <button class="remove-default-btn"><i class="fas fa-comment-dots" onclick="CommentReplyToggle({{ comment.pk }})"></i></button>
-                    </div>
                 </div>
-            </div>
-            <div class="row justify-content-center mt-3 d-none" id="{{ comment.pk }}">
-                <div class="col-md-5 col-sm-12">
-                    <form method="post" action="{% url 'comment-reply' post.pk comment.pk %}">
-                        {% csrf_token %}
-                        {{ form | crispy }}
-                        <div class="d-grid gap-2">
-                            <button class="btnb btn-success mt-3">Submit !</button>
-                        </div>
-                    </form>
-                </div>
-                {% for child_comment in comment.children %}
-                <div class="row justify-content-center mt-3 mb-5 child-comment">
-                    <div class="col-md-5 col-sm-12 border-bottom">
-                        <div>
-                            <p class="post-text">
-                                <a >{{ child_comment.author }}</a> {{ child_comment.created_on }}
-                            </p>
-                        </div>
-                        <p>{{ child_comment.comment }}</p>
-                    </div>
-                </div>
-                {% endfor %}
-            {% endif %}
-            {% endfor %}
-            </div>
-        </div>
-    {% else %}
-    <div class="container">
-        <div class="row mt-5">
-            <div class="col-md-5 col-sm-6">
-                <a href="{% url 'index' %}" class="btn btn_light">Back to Home Page</a>
-            </div>
-        </div>
-        <div>
-            <p><strong>{{ comment.author }}</strong> {{ comment.created_on }}
-            </p>
-            <div class="row justify-content-center mt-3">
-                <p class="col-md-5 col-sm-12 border-bottom position-relative">Log in or Sign up to Comment that post !!</p>
             </div>
         </div>
     </div>
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-5 col-sm-12">
+            <form method="post">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <div class="d-grid gap-2">
+                    <button class="btnb btn-success mt-3">Submit !</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% for comment in comments %}
+    {% if comment.is_parent %}
+    <div class="row justify-content-center mt-3 mb-5 border-bottom">
+        <div class="col-md-5 col-sm-12">
+            <p>
+                <div>
+                    <strong>{{ comment.author }}</strong> {{ comment.created_on }}
+                </div>
+            </p>
+            <p>{{ comment.comment }}</p>
+
+            <div class="d-flex flex-row">
+                <form method="POST" action="{% url 'comment-like' post.pk comment.pk %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ request.path }}">
+                    <button class="remove-default-btn" type="submit">
+                        <i class="fas fa-heart"> <span>{{ comment.likes.all.count }}</span></i>
+                    </button>
+                </form>
+
+                <div>
+                    <button class="remove-default-btn"><i class="fas fa-comment-dots" onclick="CommentReplyToggle('{{ comment.pk }}', '{{ child_comment.pk }}')"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-3 d-none" id="{{ comment.pk }}">
+        <div class="col-md-5 col-sm-12">
+            <form method="post" action="{% url 'comment-reply' post.pk comment.pk %}">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <div class="d-grid gap-2">
+                    <button class="btnb btn-success mt-3">Submit !</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% for child_comment in comment.children %}
+    <div class="row justify-content-center mt-3 mb-5 child-comment" id="{{ child_comment.pk }}">
+        <div class="col-md-5 col-sm-12 border-bottom">
+            <p>
+                <div>
+                    <strong>{{ child_comment.author }}</strong> {{ child_comment.created_on }}
+                </div>
+            </p>
+            <p>{{ child_comment.comment }}</p>
+        </div>
+    </div>
+    {% endfor %}
     {% endif %}
+    {% endfor %}
+
+</div>
+
 <script type="text/javascript" src="{% static 'js/social.js' %}">
 {% endblock content %}

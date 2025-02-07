@@ -1,6 +1,7 @@
 # Guetto
 
 Welcome in my First Social Network project. Here I'm creating my first website project. 
+Guetto is a social web app project allowing gabonese people to be notified and react on the changes CTRI has been making since the end of 2023.
 
 
 To run the project, first you must get python (at least the 3.9) and django. 

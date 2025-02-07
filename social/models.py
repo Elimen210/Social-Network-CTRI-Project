@@ -15,7 +15,7 @@ class Comment(models.Model):
     created_on = models.DateTimeField(default=timezone.now)
     likes = models.ManyToManyField(User, blank=True, related_name='comment_likes')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    post = models.ForeignKey('Post', on_delete=models.CASCADE)
+    post = models.ForeignKey('Post', on_delete=models.CASCADE, related_name="comments")
     parent = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True, related_name='+')
     
     @property

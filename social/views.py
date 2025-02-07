@@ -80,7 +80,7 @@ class CommentReplyView(LoginRequiredMixin, View):
             new_comment.parent = parent_comment
             new_comment.save()
 
-        return redirect('post-detail', pk=post.pk)
+        return redirect('post-detail', pk=post_pk)
 
 
 class AddLike(LoginRequiredMixin, View):

@@ -1,15 +1,17 @@
 {
   "ExpandedNodes": [
     "",
+    "\\Guetto",
     "\\landing",
     "\\landing\\templates",
     "\\landing\\templates\\landing",
+    "\\media\\uploads",
     "\\social",
     "\\social\\templates",
     "\\social\\templates\\social",
-    "\\static",
+    "\\static\\images",
     "\\static\\js"
   ],
-  "SelectedNode": "\\social\\templates\\social\\post_detail.html",
+  "SelectedNode": "\\social\\models.py",
   "PreviewInSolutionExplorer": false
 }

@@ -2,7 +2,7 @@
 
 <!doc<!doctype html>
 <html lang="en">
-  <head>
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,8 +15,11 @@
     <script src="https://kit.fontawesome.com/1d71f92e0a.js" crossorigin="anonymous"></script>
 
     <link href="{% static 'style.css' %}" rel="stylesheet">
+
+    <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
     <title>Guetto</title>
-  </head>
+</head>
+    
   <body>
     {% include 'landing/navbar.html' %}
     {% block content %}
