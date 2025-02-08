@@ -10,6 +10,11 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     likes = models.ManyToManyField(User, related_name='likes', blank=True)
 
+    @property
+    def parent_comments_count(self):
+        # Seuls les commentaires dont 'parent' est null sont considérés comme parents
+        return self.comments.filter(parent__isnull=True).count()
+
 class Comment(models.Model):
     comment = models.TextField()
     created_on = models.DateTimeField(default=timezone.now)

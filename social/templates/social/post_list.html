@@ -41,7 +41,7 @@
                         {% csrf_token %}
                         <input type="hidden" name="next" value="{{ request.path }}">
                         <button class="remove-default-btn" type="submit">
-                            <i class="fas fa-comment"> <span>{{ post.comments.count }}</span></i>
+                            <i class="fas fa-comment"> <span>{{ post.parent_comments_count }}</span></i>
                         </button>
                     </form>
                 </div>

@@ -5,13 +5,10 @@
     "\\landing",
     "\\landing\\templates",
     "\\landing\\templates\\landing",
-    "\\media\\uploads",
     "\\social",
     "\\social\\templates",
-    "\\social\\templates\\social",
-    "\\static\\images",
-    "\\static\\js"
+    "\\social\\templates\\social"
   ],
-  "SelectedNode": "\\social\\models.py",
+  "SelectedNode": "\\social\\views.py",
   "PreviewInSolutionExplorer": false
 }
