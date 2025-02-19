@@ -33,6 +33,10 @@ class Comment(models.Model):
             return True
         return False
 
+    @property
+    def child_comment_count(self):
+        return self.children.count()
+
 class UserProfile(models.Model):
     user = models.OneToOneField(User, primary_key=True, verbose_name='user', related_name='profile', on_delete=models.CASCADE)
     name = models.CharField(max_length=30, blank=True, null=True)
